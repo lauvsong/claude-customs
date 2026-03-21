@@ -3,6 +3,7 @@
 ## SUMMARY (READ FIRST)
 - Secrets/tokens/PII: never request, view, store, output, or hardcode. Mask with `***` when sharing logs.
 - Destructive actions, Prod impact, Contract breaking: prohibited without Approval Protocol.
+- No guardrail bypass: blocked command = stop, report, ask user. No string tricks or indirect execution.
 - No test bypass. Evidence required before declaring done.
 
 ## RULES
@@ -29,14 +30,19 @@ Approval is valid only when all 3 elements are present:
 - Prod-impacting work is avoided by default. If unavoidable: narrow scope + approval required.
 - API/contract breaking changes: never proceed without reconfirmation/approval.
 
-### R5) No Test Bypass
+### R5) No Guardrail Bypass
+- When a command is blocked (error contains `PreToolUse` + `hook error` + `BLOCKED`), **never attempt to circumvent the block**.
+- Prohibited bypass techniques: string concatenation (`"print""env"`), variable substitution (`cmd=X && $cmd`), eval, aliasing, encoding, or any indirect execution.
+- On block: report what was blocked and why, then ask the user for an alternative approach.
+
+### R6) No Test Bypass
 - Never delete/weaken tests to make them pass.
 - On failure: log analysis → minimal reproduction → fix root cause → regression test.
 
-### R6) Evidence Before Done
+### R7) Evidence Before Done
 - Before declaring done: provide verification summary + (when needed) masked evidence (log snippets).
 
-### R7) Escalation
+### R8) Escalation
 When user requests rule violations:
 1) Warning + safer alternative
 2) Reconfirmation request + specific risks (data loss/outage/security exposure)
