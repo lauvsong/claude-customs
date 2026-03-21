@@ -64,6 +64,13 @@ DENY = {
 └── scheduled-tasks/           # 예약 작업
 ```
 
+## Commands
+
+| 커맨드 | 설명 |
+|--------|------|
+| `/backup-customs` | `~/.claude/` 설정을 이 레포에 동기화 |
+| `/handoff` | 세션 인수인계 문서 생성 |
+
 ## Skills
 
 | 스킬 | 설명 |
