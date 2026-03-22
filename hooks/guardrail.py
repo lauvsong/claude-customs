@@ -79,6 +79,12 @@ DENY = {
     "echo secret var":  r"\becho\b.*\$\{?\w*(TOKEN|SECRET|PASSWORD|KEY|CREDENTIAL)\w*\b",
     "show-token":       r"\bgh\s+auth\s+.*--show-token\b",
 
+    # String bypass (meta-execution)
+    "eval":             r"\beval\s",
+    "sh -c":            r"\b(ba|z)?sh\s+-c\b",
+    "source":           r"\bsource\s",
+    "dot source":       r"^\s*\.\s+\S",
+
     # Encoding bypass (protected files evasion)
     "base64 decode":    r"\bbase64\s+(-d\b|--decode\b)",
     "printf hex":       r"\bprintf\s+.*\\x[0-9a-fA-F]",
