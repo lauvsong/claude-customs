@@ -30,7 +30,7 @@
 ### R5) Lessons (self-improvement loop)
 - When receiving corrections/feedback from user:
   - Record a short rule (pattern) to avoid repeating the same mistake.
-  - `lesson` 스킬을 사용하여 `tasks/lessons.md`에 기록한다.
+  - Use the `lesson` skill to record in `tasks/lessons.md`.
 
 ### R6) Repo access condition
 - If `tasks/todo.md`, `tasks/lessons.md` exist and are writable → update files.

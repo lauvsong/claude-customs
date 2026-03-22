@@ -40,3 +40,8 @@
 - GOOD: Move blocking I/O to boundedElastic, keep caller non-blocking
 - BAD: `someMono.subscribe()` — traceId 유실
 - GOOD: `someMono.contextWrite(ctx).subscribe()` 또는 체인 내 `.flatMap()`으로 포함
+
+## SELF-CHECK (before final response)
+- No event-loop blocking in request path?
+- Blocking I/O isolated to boundedElastic?
+- traceId/MDC context propagated at every async boundary?

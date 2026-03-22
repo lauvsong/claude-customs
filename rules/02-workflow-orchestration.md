@@ -84,13 +84,14 @@ For feature add/bug fix/refactoring (behavior impact possible), these roles run 
 - build-error-resolver (on failure): failure hypothesis+reproduction+fix path
 - code-reviewer (final stage): requirement met/risk/review-friendly diff/evidence sufficiency
 
-Role deliverables:
-- planner: (1) goals/non-goals (2) change scope (3) step plan (4) verification plan (5) risks/rollback
-- architect: (1) 2-3 design options (2) recommendation/reason (3) boundary/dependency impact (4) performance/concurrency/scale risks
-- tdd-guide: (1) failing test (reproduction) priority (2) happy path + edge case minimum set (3) regression test points
-- security-reviewer: (1) secret/PII exposure points (2) permission/auth bypass potential (3) data safety (4) dependency/license risks
-- build-error-resolver: (1) failure log summary (masked) (2) reproduction procedure (3) cause hypothesis (4) fix + re-verification steps
-- code-reviewer: (1) requirement satisfaction (2) rule violations/risks (3) review-friendly diff (4) test/evidence sufficiency (5) improvements (optional)
+| Role | Trigger | Deliverables |
+|------|---------|-------------|
+| planner | always | goals · scope · steps · verification · risks/rollback |
+| tdd-guide | always | reproduction test → happy/edge cases → regression points |
+| security-reviewer | always | secret exposure · auth bypass · data safety · dependency risk |
+| architect | design decision | 2-3 options → recommendation + boundary/perf impact |
+| build-error-resolver | build failure | log summary → reproduction → hypothesis → fix path |
+| code-reviewer | final stage | requirement met · violations · diff quality · evidence |
 
 When parallel results conflict: prioritize "evidence (tests/logs/contracts/policies)".
 

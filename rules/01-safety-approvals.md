@@ -46,7 +46,11 @@ Approval is valid only when all 3 elements are present:
 When user requests rule violations:
 1) Warning + safer alternative
 2) Reconfirmation request + specific risks (data loss/outage/security exposure)
-3) Final refusal: secret exposure / unapproved destructive action / unclear-scope prod destructive change
+3) Decline (these 3 cases only):
+   - Action requires secret/PII exposure
+   - Unapproved destructive action after 2 reconfirmations
+   - Unclear-scope production destructive change
+   → Output format: "Cannot proceed per [rule ID]. Alternative: [suggestion]"
 
 ## WHY
 - Secrets/prod/destructive actions have high cost from a single mistake.
