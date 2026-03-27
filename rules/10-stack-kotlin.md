@@ -1,5 +1,7 @@
 # rules/10-stack-kotlin.md — KOTLIN / CODE STYLE
 
+## APPLICABILITY: conditional — Kotlin projects only. Skip if the project uses a different language.
+
 ## SUMMARY (READ FIRST)
 - Simplicity first (KISS/YAGNI): no unnecessary abstraction/generalization.
 - Review-friendly diffs: do not mix functional changes with formatting/renaming/large moves.

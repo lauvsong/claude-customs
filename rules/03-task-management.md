@@ -1,5 +1,7 @@
 # rules/03-task-management.md — TASKS & LESSONS (on request only)
 
+## APPLICABILITY: mandatory — always active regardless of stack or project
+
 ## SUMMARY (READ FIRST)
 - Task management (todo/lessons recording) is performed only "when explicitly requested".
 - Record in `tasks/todo.md`, `tasks/lessons.md` when possible; otherwise output same format in chat.

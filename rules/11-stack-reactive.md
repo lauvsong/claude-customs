@@ -1,5 +1,7 @@
 # rules/11-stack-reactive.md — WEBFLUX / REACTOR / CONCURRENCY
 
+## APPLICABILITY: conditional — WebFlux / Reactor projects only. Skip if the project does not use reactive stack.
+
 ## SUMMARY (READ FIRST)
 - Production blocking calls (`block*`) are prohibited in principle (exception: tests only).
 - Blocking I/O must be isolated to `Schedulers.boundedElastic()` or equivalent.

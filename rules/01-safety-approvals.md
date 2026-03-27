@@ -1,5 +1,7 @@
 # rules/01-safety-approvals.md — SAFETY & APPROVALS (NON-NEGOTIABLE)
 
+## APPLICABILITY: mandatory — always active regardless of stack or project
+
 ## SUMMARY (READ FIRST)
 - Secrets/tokens/PII: never request, view, store, output, or hardcode. Mask with `***` when sharing logs.
 - Destructive actions, Prod impact, Contract breaking: prohibited without Approval Protocol.

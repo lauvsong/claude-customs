@@ -1,5 +1,7 @@
 # rules/04-repo-boundaries.md — REPO STRUCTURE & BOUNDARIES
 
+## APPLICABILITY: mandatory — always active regardless of stack or project
+
 ## SUMMARY (READ FIRST)
 - Respect "modify-with-care / read-only / restricted-access" boundaries for safety.
 - Production config / infra / deploy files are not modified by default.

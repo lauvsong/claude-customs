@@ -1,5 +1,7 @@
 # rules/02-workflow-orchestration.md — WORKFLOW ORCHESTRATION (Plan Mode only)
 
+## APPLICABILITY: mandatory — always active regardless of stack or project
+
 ## SUMMARY (READ FIRST)
 - Non-trivial tasks (>=3 steps or architecture decisions) start in Plan Mode.
 - On problems: Investigation (log/reproduction/hypothesis) → STOP & Re-plan if needed.

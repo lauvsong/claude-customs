@@ -1,5 +1,7 @@
 # rules/12-stack-testing.md — TESTING / BUILD / VERIFICATION
 
+## APPLICABILITY: conditional — Kotlin + Gradle projects only. Testing principles (R1, R6) are universal; commands and conventions (R3~R5, R7) are stack-specific.
+
 ## SUMMARY (READ FIRST)
 - Behavior changes require test updates/additions (especially business logic/data/permissions/contracts).
 - On failure: log analysis → minimal reproduction test → fix → re-verify. No test bypass.
