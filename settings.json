@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(*)",
       "Read(**)",
@@ -61,34 +62,8 @@
     "postman@claude-plugins-official": true
   },
   "sandbox": {
-    "enabled": false,
-    "network": {
-      "allowedDomains": [
-        "*"
-      ]
-    },
-    "filesystem": {
-      "allowWrite": [
-        "~/"
-      ]
-    },
-    "permissions": {
-      "allow": [
-        "Bash(*)",
-        "Read(**)",
-        "Edit(**)",
-        "Write(**)",
-        "MultilineCommand(*)",
-        "WebFetch(*)",
-        "WebSearch(*)",
-        "Glob(*)",
-        "Grep(*)",
-        "mcp__*"
-      ]
-    }
+    "enabled": false
   },
-  "defaultMode": "auto",
-  "editorMode": "vim",
   "env": {
     "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-4-6"
   },
