@@ -3,6 +3,8 @@ name: github-notification-cleanup
 description: GitHub 알림 정리 — 내가 리뷰해야 할 open PR만 남기고 나머지 done 처리
 ---
 
+DO NOT DO ANY WORK DIRECTLY. ASSIGN THE ENTIRE TASK TO AN AGENT (subagent) using the Agent tool if you call MCP.
+
 GitHub 알림 inbox를 정리해줘. 내가 당장 리뷰해야 하는 PR 알림만 남기고 나머지는 전부 done 처리.
 되묻거나 확인하지 말고 즉시 수행하세요.
 gh 스킬을 참고하여 `gh` CLI로만 작업을 수행한다.
