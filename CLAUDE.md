@@ -9,14 +9,16 @@
 6) Done condition: No "done" without verification (Evidence).
 
 ## WORKFLOW
-→ rules/02-workflow-orchestration.md (Plan Mode / Investigation / STOP triggers / Agent Roles)
+→ rules/02-workflow-orchestration.md (Plan Mode / Investigation / STOP triggers / Agent Roles / Tool Execution Patterns)
 
 ## OUTPUT CONTRACT (2-line summary)
 - Deliverables follow: Plan → Change summary → Verification method → Evidence.
 - `tasks/todo.md`, `tasks/lessons.md` recording only when requested (file if possible, chat if not).
+- 긴 한국어 산출물(README·문서·공유 메시지·구조화된 긴 응답) 작성 후 `/korean-tone-review` 호출. 짧은 응답은 면제.
 
 ## FINAL SELF-CHECK (before final response)
 - No CORE violations (secrets/approval/prod/contract/guardrail bypass/test bypass)?
 - No out-of-scope refactoring/formatting mixed in?
 - Verification performed, or non-execution reason/impact clearly stated?
 - Sensitive info in logs/snippets masked with `***`?
+- 긴 한국어 산출물이면 `/korean-tone-review` 호출했는가? (skill 본문이 mechanical 패턴 매칭으로 검수)
