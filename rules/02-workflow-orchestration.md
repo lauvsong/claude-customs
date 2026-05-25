@@ -9,6 +9,7 @@
 - Before done: verification + Evidence. Final check: "Would a staff engineer approve this?"
 - If it's a band-aid, seek elegant solution. If it's a simple fix, avoid over-engineering.
 - When transforming code patterns: verify behavioral equivalence (happy path + error path + side effects) before applying.
+- Run commands in foreground with adequate timeout by default; background + polling loops are last resort, not first reach (R10).
 
 ## RULES
 ### R1) Plan Mode (conditional — not default)
@@ -104,13 +105,26 @@ For feature add/bug fix/refactoring (behavior impact possible), these roles run 
 
 When parallel results conflict: prioritize "evidence (tests/logs/contracts/policies)".
 
+### R10) Tool Execution Patterns (foreground vs background, polling)
+- Default: run commands in **foreground** with a generous Bash `timeout` (up to `600000` ms / 10 min).
+- Use background execution **only** for genuinely long-running work (10 min+ builds, watch processes, log streams) or tasks that must run while the conversation continues.
+- Pipe buffering trap: `cmd 2>&1 | tail -N` only emits output when `cmd` exits — combining background execution with such pipes makes progress invisible until completion.
+- Do NOT use `ScheduleWakeup` / sleep loops as a polling mechanism for background command output. Background commands send completion notifications automatically; while waiting, do other work or respond to the user.
+- Avoid broad termination commands (`gradlew --stop`, `pkill -f xxx`, `docker kill $(docker ps -q)`, etc.) when other instances of the same tool may be running — they kill in-progress work too. Prefer targeted PID kills or single-instance termination.
+- Background completion notifications report **command exit code only** (e.g., `exit 0`). This is **not** a success signal for the underlying task — a stopped daemon, killed pipe, or short-circuited `tail` can all return 0. Always read the actual output and verify per R4 (Verification Before Done) before claiming success.
+
 ## WHY
 - Plan Mode reduces omissions (verification/approval/boundaries).
 - Investigation→STOP flow reduces stalls while maintaining safe confidence.
 - Role separation keeps main context clean.
+- Background + polling loops for short tasks waste tokens, hide failure modes (pipe buffering, daemon stop), and frustrate users by stretching 1-minute work into 10-minute waits.
 
 ## EXAMPLES
 - Feature add (3+ steps): checklist plan → small diffs → test/log Evidence summary
 - Unknown cause: Investigation → if still unknown → STOP & minimal questions
 - BAD: Replacing `subscribe(onError)` with `doOnError` + `subscribe()` without adding `onErrorComplete` — `doOnError` peeks but does not consume, causing `ErrorCallbackNotImplemented`
 - GOOD: Verify error path equivalence first, then add `onErrorComplete()` to match the original consume behavior
+- BAD: `Bash(./gradlew test ... | tail -80, run_in_background: true)` then 5× `ScheduleWakeup` polling for output — pipe buffers everything until exit, polling burns context.
+- GOOD: `Bash(./gradlew test ... | tail -80, timeout: 600000)` foreground — output delivered as soon as the build finishes.
+- BAD: User said "kill it" → `./gradlew --stop` killing every daemon including the one whose test was about to finish, then misreading the exit-0 stop notification as "tests passed".
+- GOOD: Identify the duplicate run by PID (`pgrep -fl gradle`), kill only that one, let the original finish, then verify pass/fail from actual test output.
