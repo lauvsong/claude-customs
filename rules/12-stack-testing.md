@@ -56,6 +56,14 @@
 - On failure: log analysis → minimal reproduction test (if possible) → fix → regression test
 - Never delete/weaken tests to make them pass.
 
+### R6-1) "Test passed" 보고 직전 재실행 (Fresh evidence)
+- "테스트 통과" / "BUILD SUCCESSFUL" 보고는 **현재 발언 시점의 fresh 결과**여야 한다.
+- 다음 중 하나라도 해당되면 보고 직전 재실행:
+  - 마지막 verify 이후 검증 대상 또는 그 의존 파일이 수정됨 (`<system-reminder>`의 file modification 알림 포함)
+  - 마지막 verify 후 다른 발언/도구 호출이 끼어 있어 시점이 어긋남
+  - 의심스러우면 그냥 재실행 (코스트 < 거짓 통과 보고의 비용)
+- 이전 BUILD SUCCESSFUL 결과를 그대로 인용 금지.
+
 ### R7) Evidence format
 - Build/Test results summary (success/failure, key numbers)
 - Log snippets shared with `***` masking

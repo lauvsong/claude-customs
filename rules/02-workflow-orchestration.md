@@ -51,6 +51,7 @@
   - Log verification (masked)
   - Accuracy/reproducibility proof
 - Self-question: "Would a staff engineer approve this?"
+- **Fresh evidence rule**: "통과/완료" 보고 시점이 마지막 verify와 어긋나면 — 파일이 추가 수정됐거나(`<system-reminder>`의 file modification 알림 포함), 시간이 흘렀거나, 의존 파일이 변경됐을 가능성이 있다면 — **재실행 후 보고**. stale evidence(이전에 통과한 결과 그대로 인용) 금지. system-reminder가 알려준 파일이 검증 대상의 의존이면 별도 알림 없는 다른 파일도 함께 변경됐을 수 있으므로, 의심되면 검증 대상 전체를 재실행.
 
 ### R5) Behavioral Equivalence Verification (mandatory on pattern transformation)
 - When transforming one code pattern into another, **always verify that behavior AND side effects are fully identical**.
